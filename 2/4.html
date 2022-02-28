@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Homework</title>
 </head>
+
 <body>
-<!--
+  <!--
 Обязательное задание.
 
 Необходимо реализовать четыре функции, каждая функция должна принимать по два
@@ -28,10 +30,63 @@
 
 Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
 -->
-<script>
-  "use strict";
+  <script>
+    "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
-</script>
+    const a = +prompt('Введите переменную a');
+    const b = +prompt('Введите переменную b');
+
+
+
+    /**
+     * Description   Выполняется сложение перменной a и переменной b
+     * @param {number} a первое число 
+     * @param {number} b второе число
+     * @returns {number} возращается значение сложения двух переменных
+     */
+    function Addition(a, b) {
+      return a + b;
+    }
+    /**
+     * Description  Выполняется вычитание из наибольшой переменной меньшую
+     * @param {number} a Первое число
+     * @param {number} b Второе число
+     * @returns {number} возращается разность большей переменной и 
+     * меньшей переменной
+    */
+    function Difference(a, b) {
+      if (a > b) {
+        return a - b;
+      } else if (b > a) {
+        return b - a;
+      } else {
+        return 0;
+      }
+    }
+    /**
+     * Description Выполняется нахождения результата умножения переменных
+     * @param {number} a Первое число
+     * @param {number} b Второе число
+     * @returns {number} Возращается результат умножения переменных a и b
+    */
+    function Multiplication(a, b) {
+      return a * b;
+    }
+    /**
+     * Description Выполняется деление переменной a на переменную b
+     * @param {number} a Первое число
+     * @param {number} b Второе число
+     * @returns {number} Возращается результат деления переменных a и b
+    */
+    function Division(a, b) {
+      return a / b;
+    }
+
+    console.log(Addition(a, b));
+    console.log(Difference(a, b));
+    console.log(Multiplication(a, b));
+    console.log(Division(a, b));
+  </script>
 </body>
+
 </html>
