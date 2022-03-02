@@ -36,26 +36,29 @@ console.log(declinationOfNumber(5, "стул", "стула", "стульев"));
      * @param {string} five Третье сколонение отвечающие всем остальным 
      * вариантам
      * @returns {string} Возвращаем подящие склонение в место вызова функции
-     */
+    **/
     function declinationOfNumber(count, one, two, five) {
       if (count < 10) {
         if (count === 1) {
           return one;
-        } else if (count >= 2 && count <= 4) {
-          return two;
-        } else if (count >= 5 || count === 0) {
-          return five;
         }
-      } else if (count >= 10 && count <= 20) {
+        if (count >= 2 && count <= 4) {
+          return two;
+        }
         return five;
-      } else if (count > 20) {
+      }
+      if (count >= 10 && count <= 20 || count % 100 >= 10 &&
+        count % 100 <= 20) {
+        return five;
+      }
+      if (count > 20) {
         if ((count % 10) === 1) {
           return one;
-        } else if ((count % 10) >= 2 && (count % 10) <= 4) {
-          return two;
-        } else if ((count % 10) >= 5 || (count % 10) === 0) {
-          return five;
         }
+        if ((count % 10) >= 2 && (count % 10) <= 4) {
+          return two;
+        }
+        return five;
       }
     }
 

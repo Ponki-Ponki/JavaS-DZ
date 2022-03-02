@@ -34,7 +34,7 @@
     const intH = int / 100;
     const intD = Math.trunc(intH * 10) % 10;
     const intU = int % 10;
-    console.log(`В числе ${int} количество сотен: ${Math.trunc(intH)}, \
+    console.log(`В числе ${int} количество сотен: ${Math.trunc(intH) % 10}, \
 десятков: ${intD}, единиц: ${intU}`);
   </script>
 </body>
