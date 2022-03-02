@@ -43,8 +43,9 @@
      * @param {number} a первое число 
      * @param {number} b второе число
      * @returns {number} возращается значение сложения двух переменных
-     */
-    function Addition(a, b) {
+    **/
+    function addition(a, b) {
+
       return a + b;
     }
     /**
@@ -53,23 +54,22 @@
      * @param {number} b Второе число
      * @returns {number} возращается разность большей переменной и 
      * меньшей переменной
-    */
-    function Difference(a, b) {
+    **/
+    function difference(a, b) {
       if (a > b) {
         return a - b;
-      } else if (b > a) {
-        return b - a;
-      } else {
-        return 0;
       }
+      return b - a;
+
     }
     /**
      * Description Выполняется нахождения результата умножения переменных
      * @param {number} a Первое число
      * @param {number} b Второе число
      * @returns {number} Возращается результат умножения переменных a и b
-    */
-    function Multiplication(a, b) {
+    **/
+    function multiplication(a, b) {
+
       return a * b;
     }
     /**
@@ -77,15 +77,16 @@
      * @param {number} a Первое число
      * @param {number} b Второе число
      * @returns {number} Возращается результат деления переменных a и b
-    */
-    function Division(a, b) {
+    **/
+    function division(a, b) {
       return a / b;
     }
 
-    console.log(Addition(a, b));
-    console.log(Difference(a, b));
-    console.log(Multiplication(a, b));
-    console.log(Division(a, b));
+    console.log(addition(a, b));
+    console.log(difference(a, b));
+    console.log(multiplication(a, b));
+    console.log(division(a, b));
+
   </script>
 </body>
 
