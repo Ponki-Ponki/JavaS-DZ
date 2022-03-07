@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+
+<body>
+  <!--
+Обязательное задание.
+
+Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
+Необходимо создать функцию-конструктор/класс для поста в социальной сети.
+Названия: `PostES5` для es5 стиля и `PostES6` для es6 стиля.
+Пост должен хранить:
+1. Автора поста (имени достаточно).
+2. Текст поста.
+3. Дату и время последнего изменения поста.
+Данные автора поста и текст поста необходимо передавать при создании
+экземпляра объекта.
+Каждому экземпляру объекта должен быть доступен метод `edit`, который будет
+менять текст поста.
+
+---
+
+Необходимо создать функцию-конструктор/класс для закрепленного поста в
+социальной сети.
+Названия: `AttachedPostES5` для es5 стиля и `AttachedPostES6` для es6 стиля.
+Закрепленный пост должен наследоваться от обычного поста.
+Данные автора поста и текст поста необходимо передавать при создании
+экземпляра объекта.
+Закрепленный пост должен иметь свойство `highlighted`, в котором по умолчанию
+будет лежать значение false (это свойство будет обозначать, будет ли наш
+закрепленный пост подсвечен).
+У экземпляров объекта закрепленного поста должен быть метод с названием
+`makeTextHighlighted`, который сделает так, чтобы наш пост стал подсвеченным
+(будет менять свойство `highlighted`).
+
+---
+
+Подсказки:
+1. Задание сложное, советую делать по аналогии с примером на онлайн-занятии.
+2. Обратите внимание что пост хранит "дату и время последнего изменения
+поста", это значит что если пост кто-то изменит (например вызовет какой-то
+метод, который изменит что-то в посте), дата и время последнего изменения
+поста также должна измениться.
+3. Выполняйте все по порядку, не стоит пытаться сделать все сразу, иначе можно
+что-нибудь пропустить.
+4. Если непонятно условие - задайте вопрос.
+-->
+  <script>
+    "use strict";
+
+    /**
+      * Description Прототип для создания объектов поста
+      * @param {string} name Имя автора поста
+      * @param {string} textPost Текст поста
+      * @param {string} dateAndTime Дата и время поста
+      * @returns {obj} получаем объект
+    **/
+    function PostES5(name, textPost, dateAndTime) {
+      this.name = name;
+      this.textPost = textPost;
+      this.dateAndTime = dateAndTime;
+    }
+
+    PostES5.prototype.constructor = PostES5;
+    PostES5.prototype.edit = function (text) {
+      this.textPost = text;
+      this.dateAndTime = 'Дата изменения: ' + date();
+    };
+
+    /**
+      * Description Определение месяца и замещение числового значания названием 
+      * месяца
+      * @param {number} m Получаем целочисленное значение месяца
+      * @returns {string} Возращаем название месяца
+    **/
+    function month(m) {
+      switch (m) {
+        case 0: return ' Января';
+          break;
+        case 1: return ' Февраля';
+          break;
+        case 2: return ' Марта';
+          break;
+        case 3: return ' Апреля';
+          break;
+        case 4: return ' Мая';
+          break;
+        case 5: return ' Июня';
+          break;
+        case 6: return ' Июля';
+          break;
+        case 7: return ' Августа';
+          break;
+        case 8: return ' Сентября';
+          break;
+        case 9: return ' Октября';
+          break;
+        case 10: return ' Ноября';
+          break;
+        case 11: return ' Декабря';
+          break;
+      }
+    }
+
+
+
+    /**
+      * Description Создание даты в определённом виде из стандартного формата
+      * @returns {date} Получаем дату в нужном нам виде
+    **/
+    function date() {
+      let datePost = new Date;
+      datePost = datePost.getDay() + month(datePost.getMonth()) +
+        ' Время: ' + datePost.getHours() + ':' + datePost.getMinutes();
+      return datePost;
+    }
+
+    const post1 = new PostES5('Василий', 'флырвралпифываыфвафыво', date());
+    console.log(post1);
+    post1.edit('new text');
+    console.log(post1);
+
+
+    AttachedPostES5.prototype = Object.create(PostES5.prototype);
+    AttachedPostES5.prototype.constructor = AttachedPostES5;
+
+
+    /**
+      * Description Создание прототипа на основе PostES5 и присвоение ему 
+      * новых значений
+      * @param string} name Имя автора поста
+      * @param {string} textPost Текст поста
+      * @param {string} dateAndTime Дата и время поста
+      * @param {bollean} highlighted булевое значение закрплён пост или нет
+      * (по умолчанию false)
+      * @returns {obj} Получаем объект для закреплённого поста
+    **/
+    function AttachedPostES5(name, textPost, dateAndTime, highlighted) {
+      this.name = name;
+      this.textPost = textPost;
+      this.dateAndTime = dateAndTime;
+      this.highlighted = highlighted = false;
+    }
+
+    const AttachedPost1 = new AttachedPostES5(post1.name,
+      post1.textPost, post1.dateAndTime);
+
+    AttachedPostES5.prototype.makeTextHighlighted = function () {
+      this.highlighted = !this.highlighted;
+    }
+
+    console.log(AttachedPost1);
+    AttachedPost1.makeTextHighlighted();
+    console.log(AttachedPost1);
+
+
+    class PostES6 {
+      constructor(name, textPost, dateAndTime) {
+        this.name = name;
+        this.textPost = textPost;
+        this.dateAndTime = dateAndTime;
+      }
+
+      edit(text) {
+        this.textPost = text;
+        this.dateAndTime = 'Дата изменения: ' + date();
+      };
+    }
+
+    class AttachedPostES6 extends PostES6 {
+      constructor(name, textPost, dateAndTime, highlighted) {
+        super(name, textPost, dateAndTime);
+        this.highlighted = highlighted = false;
+      }
+
+      makeTextHighlighted() {
+        this.highlighted = !this.highlighted;
+      }
+    }
+
+
+    const post2 = new PostES6('Анатолий',
+      'флырвралпитфвылоаилофиывлоарлофыирвлао', date());
+    console.log(post2);
+    post2.edit('new text2');
+    console.log(post2);
+    const AttachedPost2 = new AttachedPostES6(post2.name,
+      post2.textPost, post2.dateAndTime);
+    console.log(AttachedPost2);
+    AttachedPost2.makeTextHighlighted();
+    console.log(AttachedPost2);
+  </script>
+</body>
+
+</html>
