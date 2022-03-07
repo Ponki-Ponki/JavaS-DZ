@@ -34,7 +34,9 @@
     }
 
     ProductES5.prototype.constructor = ProductES5;
-    ProductES5.prototype.make25Discount = () => this.price *= 0.75;
+    ProductES5.prototype.make25Discount = function () {
+      this.price *= 0.75;
+    }
 
     const product1 = new ProductES5('сыр', 100);
     console.log(product1);
@@ -48,7 +50,7 @@
       }
 
       make25Discount() {
-        this.price *= 0.75
+        this.price *= 0.75;
       }
     }
     const product2 = new ProductES6('яблоко', 1000);
