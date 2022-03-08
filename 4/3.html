@@ -42,30 +42,24 @@
      * @returns {obj} получаем объект состоящий из значений числа разбитого 
      * на порядки
      **/
-    function Number(units, dozens, hundreds) {
+    function Num(units, dozens, hundreds) {
       this.units = units;
       this.dozens = dozens;
       this.hundreds = hundreds;
     }
-    Number.prototype.constructor = Number;
 
     /**
      * Description Разбитие числа на состовляющие и запись в объект значений
      * @param {number} num число, которое нужно разбить на состовляющие
-     * @returns {obj/undefided} получаем объект из состовляющих числа, иначе,
-     * если данное число не удолевтворяет условиям, то получаем undefided
+     * @returns {obj} получаем объект из состовляющих числа, иначе,
+     * если данное число не удолевтворяет условиям, то получаем пустой объект
      **/
     function getDigitsOfNumber(num) {
-      if (0 <= num && num < 1000 && ((Math.trunc(num * 100) % 100) === 0)) {
-        let uni = 0, doz = 0, hun = 0;
-        hun = Math.trunc(num / 100) % 10;
-        doz = Math.trunc(num / 10) % 10;
-        uni = num % 10;
-        const num1 = new Number(uni, doz, hun);
-        return num1;
-      } else {
-        console.warn("Вы ввели не коректное число");
+      if (num >= 0 && num < 1000 && Number.isInteger(num)) {
+        return new Num(num % 10, Math.trunc(num / 10) % 10,
+          Math.trunc(num / 100) % 10);
       }
+      console.warn("Вы ввели не коректное число");
     }
 
     console.log(getDigitsOfNumber(462));
