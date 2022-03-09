@@ -32,14 +32,8 @@
     ];
 
 
-
-    /**
-     * Description Уменьшение цены на 15% для всех объектов в массиве
-     * @param {obj} prices передаём объект в функцию
-     * @returns {any} возврящаем оновлённое значение price
-    **/
-    products.forEach(function (prices) {
-      prices.price = prices.price - (prices.price * 0.15)
+    products.forEach(function (product) {
+      product.price = product.price - (product.price * 0.15);
     });
 
     console.log(products);

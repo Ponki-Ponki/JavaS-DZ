@@ -46,46 +46,14 @@
       },
     ];
 
-    let prod_photo = [];
 
-    /**
-     * Description Сортировка массива путём сравнения занчения price
-     * @param {obj} obj1 начальный объект сравнения, у которого берётся 
-     * параметр price для сравнения
-     * @param {obj} obj2 следующий объект, у которого берётся параметр 
-     * price для сравнения
-     * @returns {number} возвращаем число, благодаря которому определяется 
-     * передвинуть элемент в массиве или нет
-    **/
-    function sortPrice(obj1, obj2) {
-      if (obj1.price < obj2.price) {
-        return -1;
-      }
-      if (obj1.price > obj2.price) {
-        return 1;
-      }
-      return 0;
-    }
-
-    /**
-     * Description Фильтрация массива обектов на наличие элементов, 
-     * в этих объектах
-     * @param {obj} photo Объект, в котором проверяется на наличие параметр 
-     * photos и производится проверка на наличие значений этого параметра 
-     * @returns {array} создаётся массив отфильтрованных элементов подходящих 
-     * данным условиям 
-    **/
-    products.filter(function (photo) {
-      if (photo.hasOwnProperty('photos')) {
-        if (photo.photos.length != 0) {
-          prod_photo.push(photo);
-        }
-      }
+    const prod_photo = products.filter(obj => {
+      return obj.photos && obj.photos.length > 0
     });
     console.log(prod_photo);
 
 
-    products.sort(sortPrice);
+    products.sort((obj1, obj2) => obj1.price - obj2.price);
     console.log(products);
   </script>
 </body>
