@@ -43,16 +43,16 @@
     2. Внутри всех элементов на странице, которые имеют класс "card-link",
     поменяйте текст внутри элемента на "ссылка".
      */
-    for (let i = 0; i < document.querySelectorAll('.card-link').length; i++) {
-      document.querySelectorAll('.card-link')[i].textContent = 'ссылка';
+    const elem = document.querySelectorAll('.card-link');
+    for (let i = 0; i < elem.length; i++) {
+      elem[i].textContent = 'ссылка';
     }
 
     /*
     3. Найти все элементы на странице с классом "card-link", которые лежат в
     элементе с классом "card-body" и вывести полученную коллекцию в консоль.
      */
-    console.log(document.querySelector('.card-body')
-      .querySelectorAll('.card-link'));
+    console.log(document.querySelector('.card-body .card-link'));
 
     /*
     4. Найти первый попавшийся элемент на странице у которого есть атрибут
@@ -75,8 +75,8 @@
     7. Создайте тег `p`, запишите внутри него текст "Привет" и добавьте созданный
     тег в начало элемента, который имеет класс "card".
      */
-    document.querySelector(".card").
-      prepend(document.createElement('p').textContent = "Привет");
+    document.querySelector(".card").prepend(document.createElement('p'));
+    document.querySelector("p").textContent = "Привет";
     /*
     8. Удалите тег h6 на странице.
      */

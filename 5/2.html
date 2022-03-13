@@ -62,8 +62,7 @@
     /*
     5. У элемента с id "dropdownMenuButton" замените id на "superDropdown".
      */
-    document.querySelector('#dropdownMenuButton')
-      .attributes['id'].nodeValue = "superDropdown";
+    document.querySelector('#dropdownMenuButton').id = "superDropdown";
 
     /*
     6. Добавьте атрибут data-dd со значением 3 элементу у которого существует
@@ -83,12 +82,10 @@
     Вывод каждого атрибута и значений должен выглядеть следующим образом (пример):
     Атрибут "class" содержит значение "btn btn-secondary dropdown-toggle"
      */
-    for (let i = 0; i < document.querySelector('.btn' && '.dropdown-toggle').
-      attributes.length; i++) {
-      console.log(' Атрибут ' + document
-        .querySelector('.btn' && '.dropdown-toggle').attributes[i].name +
-        ' содержит значение ' + document
-          .querySelector('.btn' && '.dropdown-toggle').attributes[i].nodeValue);
+    const elements = document.querySelector('.btn.dropdown-toggle').attributes;
+    for (let i = 0; i < elements.length; i++) {
+      console.log(` Атрибут ${elements[i].name}` +
+        `содержит значение ${elements[i].nodeValue}`);
     }
   </script>
 </body>

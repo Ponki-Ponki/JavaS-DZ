@@ -58,17 +58,15 @@
     1. Необходимо вывести сообщение в консоль "все теги прогрузились", когда все
     теги будут созданы браузером.
     */
-    document.addEventListener('DOMContentLoaded', function () {
-      console.log("Все теги прогрузились")
-    });
+    document.addEventListener('DOMContentLoaded', () =>
+      console.log("Все теги прогрузились"));
 
     /*
     2. Необходимо вывести сообщение в консоль "страница загрузилась", когда все
     ресурсы страницы будут загружены.
     */
-    window.addEventListener('load', function () {
-      console.log("страница загрузилась")
-    });
+    window.addEventListener('load', () =>
+      console.log("страница загрузилась"));
 
     /*
     3. При клике на какой-либо тег на странице в консоль должно выводиться
@@ -87,7 +85,7 @@
         console.log('Класс "super_element" отсутвтует в элементе '
           + event.target.tagName.toLowerCase());
       }
-    })
+    });
     /*
     4. Сделайте, чтобы при наведении на textarea в консоли появлялось сообщение:
     "Вы навели на textarea."
@@ -107,7 +105,7 @@
       if (event.target.tagName === 'BUTTON') {
         console.log(event.target.textContent);
       }
-    })
+    });
     /*
     6. Вопрос: Почему в console.log пишется сначала текст из 5 задания и только
     потом выводится текст из 3 задания, если мы кликаем по кнопкам в ul?
