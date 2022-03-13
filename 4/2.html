@@ -56,13 +56,12 @@
       * Description Прототип для создания объектов поста
       * @param {string} name Имя автора поста
       * @param {string} textPost Текст поста
-      * @param {string} dateAndTime Дата и время поста
       * @returns {obj} получаем объект
     **/
-    function PostES5(name, textPost, dateAndTime) {
+    function PostES5(name, textPost) {
       this.name = name;
       this.textPost = textPost;
-      this.dateAndTime = dateAndTime;
+      this.dateAndTime = date();
     }
 
     PostES5.prototype.constructor = PostES5;
@@ -119,14 +118,10 @@
       return datePost;
     }
 
-    const post1 = new PostES5('Василий', 'флырвралпифываыфвафыво', date());
+    const post1 = new PostES5('Василий', 'флырвралпифываыфвафыво');
     console.log(post1);
     post1.edit('new text');
     console.log(post1);
-
-
-    AttachedPostES5.prototype = Object.create(PostES5.prototype);
-    AttachedPostES5.prototype.constructor = AttachedPostES5;
 
 
     /**
@@ -134,23 +129,24 @@
       * новых значений
       * @param string} name Имя автора поста
       * @param {string} textPost Текст поста
-      * @param {string} dateAndTime Дата и время поста
       * @param {bollean} highlighted булевое значение закрплён пост или нет
       * (по умолчанию false)
       * @returns {obj} Получаем объект для закреплённого поста
     **/
-    function AttachedPostES5(name, textPost, dateAndTime, highlighted) {
+    function AttachedPostES5(name, textPost) {
       this.name = name;
       this.textPost = textPost;
-      this.dateAndTime = dateAndTime;
-      this.highlighted = highlighted = false;
+      this.dateAndTime = date();
+      this.highlighted = false;
     }
 
-    const AttachedPost1 = new AttachedPostES5(post1.name,
-      post1.textPost, post1.dateAndTime);
+    AttachedPostES5.prototype = Object.create(PostES5.prototype);
+    AttachedPostES5.prototype.constructor = AttachedPostES5;
+
+    const AttachedPost1 = new AttachedPostES5(post1.name, post1.textPost);
 
     AttachedPostES5.prototype.makeTextHighlighted = function () {
-      this.highlighted = !this.highlighted;
+      this.highlighted = true;
     }
 
     console.log(AttachedPost1);
@@ -159,10 +155,10 @@
 
 
     class PostES6 {
-      constructor(name, textPost, dateAndTime) {
+      constructor(name, textPost) {
         this.name = name;
         this.textPost = textPost;
-        this.dateAndTime = dateAndTime;
+        this.dateAndTime = date();
       }
 
       edit(text) {
@@ -172,24 +168,24 @@
     }
 
     class AttachedPostES6 extends PostES6 {
-      constructor(name, textPost, dateAndTime, highlighted) {
-        super(name, textPost, dateAndTime);
-        this.highlighted = highlighted = false;
+      highlighted = false;
+      constructor(name, textPost) {
+        super(name, textPost);
       }
 
       makeTextHighlighted() {
-        this.highlighted = !this.highlighted;
+        this.highlighted = true;
       }
     }
 
 
     const post2 = new PostES6('Анатолий',
-      'флырвралпитфвылоаилофиывлоарлофыирвлао', date());
+      'флырвралпитфвылоаилофиывлоарлофыирвлао');
     console.log(post2);
     post2.edit('new text2');
     console.log(post2);
     const AttachedPost2 = new AttachedPostES6(post2.name,
-      post2.textPost, post2.dateAndTime);
+      post2.textPost);
     console.log(AttachedPost2);
     AttachedPost2.makeTextHighlighted();
     console.log(AttachedPost2);
