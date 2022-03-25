@@ -45,9 +45,10 @@
     const elStar = document.querySelectorAll('i');
     elStar.forEach(el => {
       el.addEventListener('mouseover', ({ target }) => {
-        while (target) {
-          target.classList.add('golden');
-          target = target.previousElementSibling;
+        let star = target;
+        while (star) {
+          star.classList.add('golden');
+          star = star.previousElementSibling;
         }
       });
     });
@@ -57,9 +58,10 @@
      */
     elStar.forEach(el => {
       el.addEventListener('mouseout', ({ target }) => {
-        while (target) {
-          target.classList.remove('golden');
-          target = target.previousElementSibling;
+        let star = target;
+        while (star) {
+          star.classList.remove('golden');
+          star = star.previousElementSibling;
         }
       });
     });
