@@ -45,7 +45,10 @@
     const elStar = document.querySelectorAll('i');
     elStar.forEach(el => {
       el.addEventListener('mouseover', ({ target }) => {
-        target.classList.add('golden');
+        while (target) {
+          target.classList.add('golden');
+          target = target.previousElementSibling;
+        }
       });
     });
     /*
@@ -54,7 +57,10 @@
      */
     elStar.forEach(el => {
       el.addEventListener('mouseout', ({ target }) => {
-        target.classList.remove('golden');
+        while (target) {
+          target.classList.remove('golden');
+          target = target.previousElementSibling;
+        }
       });
     });
 
@@ -63,8 +69,10 @@
     звезды (временно могут становиться черными). Почему так? Напишите словами.
     Можем ли мы это исправить? Если да, то предложите решение.
     */
-
-
+    //Это происходит из-за того что курсор теряет элемент(i) и наводится на
+    //пустое место между ними(разрыв между элементами). Это можно исправить 
+    //если родителю поменять свойство display, и убать разрыв между i
+    document.querySelector('.stars_container').style.display = 'flex';
   </script>
 </body>
 
