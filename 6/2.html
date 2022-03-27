@@ -79,8 +79,8 @@
     1) добавить два класса: animate__animated и animate__fadeInLeftBig
     2) поставить данному элементу стиль visibility в значение 'visible'.
      */
+    const elMess = document.querySelector('.message');
     document.querySelector('.messageBtn').addEventListener('click', () => {
-      const elMess = document.querySelector('.message');
       elMess.classList.add('animate__animated', 'animate__fadeInLeftBig');
       elMess.style.visibility = 'visible';
     });
@@ -97,8 +97,8 @@
     Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
      */
     const elForm = document.querySelector('form');
+    const elFormCont = elForm.querySelectorAll('.form-control');
     elForm.addEventListener('submit', event => {
-      const elFormCont = elForm.querySelectorAll('.form-control');
       for (let i = 0; i < elFormCont.length; i++) {
         if (elFormCont[i].value === '') {
           elFormCont[i].classList.add('error');
