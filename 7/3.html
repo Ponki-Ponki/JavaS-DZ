@@ -30,11 +30,11 @@
       const arr = [];
       do {
         arr.push(n % 10);
-        n = parseInt(n / 10);
+        n = Math.trunc(n / 10);
       } while (n >= 1);
-      return arr.sort(function (a, b) {
+      return Number.parseInt(arr.sort((a, b) => {
         return b - a;
-      }).join("");
+      }).join(""));
     }
 
     console.log(descendingOrder(42145)); // 54421

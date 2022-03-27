@@ -64,19 +64,20 @@
     };
 
     const elsNavLink = document.querySelectorAll('.nav-link');
+    const elText = document.querySelector('.text');
     elsNavLink.forEach(el => {
       el.addEventListener('click', ({ target }) => {
         for (let i = 0; i < elsNavLink.length; i++) {
           elsNavLink[i].classList.remove('active');
-          target.classList.add('active');
-          Object.keys(panelText).forEach(elems => {
-            if (elems === target.parentNode.dataset.text) {
-              document.querySelector('.text').textContent = panelText[elems];
-              return;
-            };
-          })
         };
-      });
+        target.classList.add('active');
+        Object.keys(panelText).forEach(elems => {
+          if (elems === target.parentNode.dataset.text) {
+            elText.textContent = panelText[elems];
+            return;
+          }
+        });
+      })
     });
 
     /*
@@ -86,6 +87,7 @@
     перетаскивании ползунка.
      */
     const elInp = document.querySelector('input');
+    elInp.value = 30;
     elInp.addEventListener('input', () => {
       document.querySelector('#inputDiv').style.fontSize = elInp.value + 'px';
     })
