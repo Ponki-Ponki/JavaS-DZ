@@ -50,23 +50,29 @@ const arBasket = [];
  */
 function basketItemAdd(elData) {
   let ar = [...elData.children];
+  let a = true;
   ar.splice(1, 1);
   ar.push(1);
   if (arBasket.length != 0) {
-    arBasket.forEach((el) => {
-      if (ar[0].innerText === el[0]?.innerText) {
-        el[el.length - 1]++;
-      } else {
-        // let r = ar[0].innerText;
-        // if ((adaa = ads)) {
-        arBasket.forEach((el) => {
-          if (!el.includes(ar[0])) {
-            // arBasket.push(ar);
-          }
-        });
-        // }
+    let el;
+    let elA = true;
+    for (let a = 0; a < arBasket.length; a++) {
+      let i = 0;
+      if (ar[0] === arBasket[a][0]) {
+        arBasket[a][arBasket[a].length - 1]++;
+        break;
       }
-    });
+      for (let i = 0; i < arBasket.length; i++) {
+        elA = arBasket[i].includes(ar[0]);
+        if (elA) {
+          !elA;
+          break;
+        }
+      }
+    }
+    if (!elA) {
+      arBasket.push(ar);
+    }
   } else {
     arBasket.push(ar);
   }
@@ -84,7 +90,7 @@ function basketList(arrBas) {
     price: 0,
     sum: 0,
   };
-  for (let i = 1; i < basket.children.length - 1; i++) {
+  for (let i = 1; i < basket.children.length - 1; ) {
     basket.children[i].remove();
   }
   arrBas.forEach((el, ind) => {
