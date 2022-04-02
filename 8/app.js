@@ -32,7 +32,6 @@ filterSizeWrap.addEventListener("click", function () {
 const elItems = document.querySelector(".featuredItems");
 const elCartIcon = document.querySelector(".cartIconWrap");
 const elCartSpan = elCartIcon.children[elCartIcon.children.length - 1];
-let cartItems = 0;
 const basket = document.querySelector(".basket");
 const baskTotVal = document.querySelector(".basketTotalValue");
 
@@ -58,14 +57,14 @@ function basketItemAdd(elData) {
       if (ar[0].innerText === el[0]?.innerText) {
         el[el.length - 1]++;
       } else {
-        let r = ar[0].innerText;
-        if (
-          arBasket.forEach((el) => {
-            if (!el.includes(r)) {
-              arBasket.push(ar);
-            }
-          })
-        );
+        // let r = ar[0].innerText;
+        // if ((adaa = ads)) {
+        arBasket.forEach((el) => {
+          if (!el.includes(ar[0])) {
+            // arBasket.push(ar);
+          }
+        });
+        // }
       }
     });
   } else {
@@ -96,6 +95,7 @@ function basketList(arrBas) {
     basket.children[basket.children.length - 1].before(creatElBask(item));
   });
   baskTotVal.innerText = sumItems();
+  elCartSpan.textContent = amouItems();
 }
 
 /**
@@ -109,7 +109,7 @@ function creatElBask(item) {
   a.classList.add("basketRow");
   a.innerHTML = `
     <div>${item.nameItem}</div>
-    <div>${item.amount}</div>
+    <div class='amou'>${item.amount}</div>
     <div>${item.price}</div>
     <div class='sum'>${item.sum}</div>
     `;
@@ -128,6 +128,18 @@ function sumItems() {
   return totalValue;
 }
 
+/**
+ * Подсчёт кол-ва элементов в корзине (общее количество)
+ * @returns числовое значение равное общему количству элементов в корзине
+ */
+function amouItems() {
+  let totalValue = Number();
+  document.querySelectorAll(".amou").forEach((el) => {
+    totalValue += Math.trunc(el.innerText);
+  });
+  return totalValue;
+}
+
 elItems.addEventListener("click", function (event) {
   if (event.target.nodeName != "BUTTON") {
     return;
@@ -135,8 +147,6 @@ elItems.addEventListener("click", function (event) {
   if (elCartSpan.style.display === "none") {
     elCartSpan.style.display = "";
   }
-  cartItems++;
-  elCartSpan.textContent = cartItems;
   const elCart = event.target.parentNode.parentNode.parentNode;
   basketItemAdd(elCart.children[elCart.children.length - 1]);
   basketList(arBasket);
