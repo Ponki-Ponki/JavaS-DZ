@@ -50,11 +50,9 @@ const arBasket = [];
  */
 function basketItemAdd(elData) {
   let ar = [...elData.children];
-  let a = true;
   ar.splice(1, 1);
   ar.push(1);
   if (arBasket.length != 0) {
-    let el;
     let elA = true;
     for (let a = 0; a < arBasket.length; a++) {
       let i = 0;
@@ -147,7 +145,7 @@ function amouItems() {
 }
 
 elItems.addEventListener("click", function (event) {
-  if (event.target.nodeName != "BUTTON") {
+  if (event.target.nodeName !== "BUTTON") {
     return;
   }
   if (elCartSpan.style.display === "none") {
