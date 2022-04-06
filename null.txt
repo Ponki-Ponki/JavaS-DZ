@@ -25,3 +25,6 @@ const renderProducts = (list) => {
 };
 
 renderProducts(products);
+document.querySelectorAll('.product-item')
+    .forEach(el => {el.style.padding = '20px' });
+document.querySelector('.products').style.display = 'flex';
